@@ -1,0 +1,3 @@
+#!/bin/bash
+node-dev ../lib/server.js --port=3000
+# node-dev ../lib/socket.js --port=3030
