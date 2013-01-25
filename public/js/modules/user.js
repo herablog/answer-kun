@@ -7,13 +7,13 @@ var config = {
 var socket = io.connect(config.ws);
 
 // connect
-socket.on('connect', function(c){
-	console.log('connect', c)
+socket.on('connect', function(){
+	$('body').cls('connected');
 });
 
 // disconnect
 socket.on('disconnect', function(data) {
-	console.log('disconnect')
+	socket.emit('leave');
 });
 
 // send user name
