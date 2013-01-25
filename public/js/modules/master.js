@@ -24,22 +24,26 @@ socket.on('user', function(data) {
 		target.empty();
 		target
 			.data({ name: data.name, id: data.id })
-			.tag('p.name').text(data.name).gat()
-			.tag('p.message').text(data.message).gat();
+			.tag('a').attr({ href: '/master/' + data.id })
+				.tag('p.name').text(data.name).gat()
+				.tag('p.message').text(data.message).gat()
+			.gat();
 	} else {
 		$('#list').append(
 			$.tag('li')
 				.data({ name: data.name, id: data.id })
-				.text(data.name + data.message)
-				.tap(
-					function() {
-						location.replace('/master/' + data.id)
-					}
-				)
-				.tag('p.name').text(data.name).gat()
-				.tag('p.message').text(data.message).gat()
+				.tag('a').attr({ href: '/master/' + data.id })
+					.tag('p.name').text(data.name).gat()
+					.tag('p.message').text(data.message).gat()
+				.gat()
 		);
 	}
+});
+
+socket.on('leave', function(id) {
+	var selector = 'li[data-id="' + data.id + '"]';
+	var target = $('#list').find(selector);
+	target && target.remove();
 });
 
 // onload
@@ -58,13 +62,10 @@ function append(data) {
 		fragment.append(
 			$.tag('li')
 				.data({ name: data[key].name, id: data[key].id })
-				.tap(
-					function() {
-						location.replace('/master/' + data[key].id)
-					}
-				)
-				.tag('p.name').text(data[key].name).gat()
-				.tag('p.message').text(data[key].message).gat()
+				.tag('a').attr({href: '/master/' + data[key].id })
+					.tag('p.name').text(data[key].name).gat()
+					.tag('p.message').text(data[key].message).gat()
+				.gat()
 		);
 	}
 	target.append(fragment);
