@@ -5,6 +5,8 @@
 		"express": "*",
 		"jade": "*",
 		"socket.io": "0.9.11",
-		"optimist": "*"
+		"optimist": "*",
+		"stylus": "*",
+		"nib": "*"
 	}
 }
